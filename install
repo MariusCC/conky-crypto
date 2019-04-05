@@ -4,7 +4,7 @@ outf=/tmp/cconv
 conkydir=$HOME/.conky/crypto
 conkystart=$HOME/.conky/conky-startup.sh
 conkyautostart=$HOME/.config/autostart/conky.desktop
-xgap=50
+xgap=60
 
 mkdir -p conkydir
 rm -fr $conkydir/*
@@ -40,7 +40,7 @@ do
 	echo '${font Luxi Sans:size=12:bold}${color1}USD: ${color2}${execi 300 jq -r ".[0].price_usd" '$outf$currency' | xargs printf '%.*f' 4 }' >> conkyrc 
 	echo '${color1}EUR: ${color5}${execi 300 jq -r ".[0].price_eur" '$outf$currency' | xargs printf '%.*f' 4}' >> conkyrc
 	echo '${color1}BTC: ${color2}${execi 300 jq -r ".[0].price_btc" '$outf$currency' | xargs printf '%.*f' 6}' >> conkyrc
-	echo '${font Luxi Sans:size=9}${color2}Change 1H: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}' >> conkyrc
+	echo '${font Luxi Sans:size=9:bold}${color2}Change 1H: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}' >> conkyrc
 	echo '${color2}Change 1D: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_24h" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_24h" '$outf$currency'}' >> conkyrc
 	echo '${color2}Change 7D: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_7d" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_7d" '$outf$currency'}' >> conkyrc
 	echo '${color2}Volume EUR24H: $alignr ${color1}${execi 300 jq -r ".[0].\"24h_volume_eur\"" '$outf$currency'}' >> conkyrc

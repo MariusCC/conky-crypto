@@ -26,6 +26,8 @@ alignment top_left
 no_buffers yes
 uppercase no
 override_utf8_locale yes
+border_inner_margin 10
+border_width 3
 
 #colors
 color1 66AAFF #blueish
@@ -35,5 +37,5 @@ color4 00FF99 #green for up
 color5 FF9966 #orange for title
 
 # Set widget position
-gap_y 10
+gap_y 20
 # From here to the end we add variable parts
