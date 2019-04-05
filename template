@@ -1,50 +1,39 @@
 # Conky settings #
-background no
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
 update_interval 1
-double_buffer yes
-no_buffers yes
+total_run_times 0
 
-# Window specifications #
 own_window yes
-own_window_type normal
+own_window_type desktop
+own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_title 
-own_window_colour FFFFFF
+own_window_argb_visual no
+own_window_argb_value 0
 
-minimum_size 300
-
-# Alignment #
-alignment tr
-gap_x 100
-gap_y 100
-
-border_inner_margin 15
-border_outer_margin 0
-
-# Graphics settings #
+double_buffer yes
+minimum_size 250 100
+max_width 250
 draw_shades no
 draw_outline no
-draw_borders no
+draw_borders yes
 draw_graph_borders no
+default_color white
+default_shade_color red
+default_outline_color green
+alignment top_left
+no_buffers yes
+uppercase no
+override_utf8_locale yes
 
-# Text settings #
-use_xft yes
-xftalpha 0
-xftfont Roboto-Light:size=10
+#colors
+color1 66AAFF #blueish
+color2 EAEAEA #lightgrey
+color3 FFAA00 #red for down
+color4 00FF99 #green for up 
+color5 FF9966 #orange for title
 
-override_utf8_locale no
-
-imlib_cache_size 0
-
-# Color scheme #
-default_color 666666
-
-color1 006E09
-color2 9933CC
-color3 669900
-color4 FF4800
-color5 CC0000
-color6 AAAAAA
-color7 DDDDDD
-
-TEXT
+# Set widget position
+gap_y 10
+# From here to the end we add variable parts
