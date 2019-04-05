@@ -3,11 +3,16 @@ Conky Crypto
 
 Material Design conky with horizontal layout to monitor your favourite crypto currencies using CoinMarketcap API.
 
-![alt text](conky.png "Sample conky")
+Light background
+![alt text](conky2.png "Conky on light desktop background")
+
+Dark background
+![alt text](conky.png "Conky on dark desktop background")
 
 ## Currency conversion
 
 Update the crypto.conf file with whatever coins you want to monitor. Use the https://coinmarketcap.com/coins/ name for each.
+If you don't like the text colors you can easily mess up with them in the template file.
 
 ## Installation
 
