@@ -1,7 +1,6 @@
 Conky Crypto
 =============
 
-Forked from crypto-finance. Kept only the crypto part.
 Material Design conky with horizontal layout to monitor your favourite crypto currencies using CoinMarketcap API.
 
 ![alt text](conky.png "Sample conky")
