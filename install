@@ -12,6 +12,7 @@ rm -fr $conkydir/*
 # if conkystart exists, keep whatever it has and add lines before exit
 if [[ -f $conkystart ]]; then
 	sed -i.bak '/exit 0/d' $conkystart
+	sed -i.bak '/\.conky\/crypto/d' $conkystart
 else
 	# create conkystart
 	echo '#!/bin/sh' >> $conkystart
@@ -40,11 +41,11 @@ do
 	echo '${font Luxi Sans:size=12:bold}${color1}USD: ${color2}${execi 300 jq -r ".[0].price_usd" '$outf$currency' | xargs printf '%.*f' 4 }' >> conkyrc 
 	echo '${color1}EUR: ${color5}${execi 300 jq -r ".[0].price_eur" '$outf$currency' | xargs printf '%.*f' 4}' >> conkyrc
 	echo '${color1}BTC: ${color2}${execi 300 jq -r ".[0].price_btc" '$outf$currency' | xargs printf '%.*f' 6}' >> conkyrc
-	echo '${font Luxi Sans:size=9:bold}${color2}Change 1H: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}' >> conkyrc
+	echo '${font Luxi Sans:size=10:bold}${color2}Change 1H: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_1h" '$outf$currency'}' >> conkyrc
 	echo '${color2}Change 1D: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_24h" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_24h" '$outf$currency'}' >> conkyrc
 	echo '${color2}Change 7D: $alignr ${color4}${if_match ${execi 300 jq -r ".[0].percent_change_7d" '$outf$currency'}<0}${color3}${endif}${execi 300 jq -r ".[0].percent_change_7d" '$outf$currency'}' >> conkyrc
-	echo '${color2}Volume EUR24H: $alignr ${color1}${execi 300 jq -r ".[0].\"24h_volume_eur\"" '$outf$currency'}' >> conkyrc
-	echo '${color2}Volume USD24H: $alignr ${color1}${execi 300 jq -r ".[0].\"24h_volume_usd\"" '$outf$currency'}' >> conkyrc
+	echo '${color2}Volume (Mil EUR)/24H: $alignr ${color1}${execi 300 LC_NUMERIC=en_US echo "scale =0; $(jq -r ".[0].\"24h_volume_eur\"" '$outf$currency' )/ 1000000" | bc -l |xargs numfmt --grouping}' >> conkyrc
+	echo '${color2}Volume (Mil USD)/24H: $alignr ${color1}${execi 300 LC_NUMERIC=en_US echo "scale =0; $(jq -r ".[0].\"24h_volume_usd\"" '$outf$currency' )/ 1000000" | bc -l |xargs numfmt --grouping}' >> conkyrc
 	echo '${font Luxi Sans:size=7}${color2} $alignr ${execi 300 date -d @$(jq -r ".[0].last_updated" '$outf$currency') +%H:%m:%S}' >> conkyrc
 
 	# move the config to the right place
