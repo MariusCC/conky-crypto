@@ -22,4 +22,4 @@ The install script will create (if not already existing) ~$HOME/.conky/crypto an
 ./install
 ```
 
-Inspired by [this](http://www.omgubuntu.co.uk/2013/05/google-now-themed-conky-for-ubuntu-desktop).
+Inspired by [this](http://www.omgubuntu.co.uk/2013/05/google-now-themed-conky-for-ubuntu-desktop) and [this](https://www.omgubuntu.co.uk/2016/02/run-multiple-conky-scripts-same-session).
